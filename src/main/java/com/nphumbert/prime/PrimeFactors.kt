@@ -5,16 +5,16 @@ import java.util.*
 fun generate(n: Int) : List<Int> {
 
     var remains = n
-    var primes = ArrayList<Int>()
+    var factors = ArrayList<Int>()
+    val primes = Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19)
 
-    while (remains % 2 == 0) {
-        primes.add(2)
-        remains /= 2
+    primes.forEach {
+        while (remains % it == 0) {
+            factors.add(it)
+            remains /= it
+        }
     }
 
-    if (remains > 1) {
-        primes.add(remains)
-    }
-
-    return primes
+    return factors
 }
+

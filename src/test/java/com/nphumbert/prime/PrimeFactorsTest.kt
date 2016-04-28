@@ -35,4 +35,9 @@ class PrimeFactorsTest {
         assertThat(generate(8)).containsOnly(2, 2, 2)
     }
 
+    @Test
+    fun should_have_3_and_3_as_prime_factors_when_9() {
+        assertThat(generate(9)).containsOnly(3, 3)
+    }
+
 }
