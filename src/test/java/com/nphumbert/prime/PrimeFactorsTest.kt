@@ -1,8 +1,14 @@
 package com.nphumbert.prime
 
+import com.pholser.junit.quickcheck.Property
+import com.pholser.junit.quickcheck.generator.InRange
+import com.pholser.junit.quickcheck.runner.JUnitQuickcheck
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
+import org.junit.runner.RunWith
+import java.util.*
 
+@RunWith(JUnitQuickcheck::class)
 class PrimeFactorsTest {
 
     @Test
@@ -10,34 +16,13 @@ class PrimeFactorsTest {
         assertThat(generate(1)).isEmpty()
     }
 
-    @Test
-    fun should_have_2_as_prime_factor_when_2() {
-        assertThat(generate(2)).containsOnly(2)
-    }
+    @Property
+    fun should_generate_prime_factors(@InRange(minInt = 2, maxInt = 20) number: Int) {
+        val factors = generate(number)
+        val primes = Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19)
 
-    @Test
-    fun should_have_3_as_prime_factor_when_3() {
-        assertThat(generate(3)).containsOnly(3)
-    }
-
-    @Test
-    fun should_have_2_twice_as_prime_factors_when_4() {
-        assertThat(generate(4)).containsOnly(2, 2)
-    }
-
-    @Test
-    fun should_have_3_and_2_as_prime_factors_when_6() {
-        assertThat(generate(6)).containsOnly(3, 2)
-    }
-
-    @Test
-    fun should_have_2_three_times_as_prime_factors_when_8() {
-        assertThat(generate(8)).containsOnly(2, 2, 2)
-    }
-
-    @Test
-    fun should_have_3_and_3_as_prime_factors_when_9() {
-        assertThat(generate(9)).containsOnly(3, 3)
+        factors.forEach { assertThat(primes).contains(it) }
+        assertThat(number).isEqualTo(factors.reduce { first, second -> first * second })
     }
 
 }

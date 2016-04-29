@@ -18,6 +18,8 @@
         <assertj.version>3.2.0</assertj.version>
         <mockito.version>1.10.19</mockito.version>
         <kotlin.version>1.0.1-2</kotlin.version>
+        <junit-quickcheck.version>0.6</junit-quickcheck.version>
+        <slf4j.version>1.7.19</slf4j.version>
     </properties>
 
     <dependencies>
@@ -31,10 +33,26 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.pholser</groupId>
+            <artifactId>junit-quickcheck-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.pholser</groupId>
+            <artifactId>junit-quickcheck-generators</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>sl4j-simple</artifactId>
         </dependency>
 
         <!-- Kotlin -->
@@ -65,6 +83,32 @@
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-all</artifactId>
                 <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- Property Based Testing -->
+            <dependency>
+                <groupId>com.pholser</groupId>
+                <artifactId>junit-quickcheck-core</artifactId>
+                <version>${junit-quickcheck.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.pholser</groupId>
+                <artifactId>junit-quickcheck-generators</artifactId>
+                <version>${junit-quickcheck.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>sl4j-simple</artifactId>
+                <version>${slf4j.version}</version>
                 <scope>test</scope>
             </dependency>
 

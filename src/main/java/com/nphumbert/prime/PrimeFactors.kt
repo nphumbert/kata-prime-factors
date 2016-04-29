@@ -2,7 +2,7 @@ package com.nphumbert.prime
 
 import java.util.*
 
-fun generate(n: Int) : List<Int> {
+fun generate(n: Int): List<Int> {
 
     var remains = n
     var factors = ArrayList<Int>()
