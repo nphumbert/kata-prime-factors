@@ -9,7 +9,7 @@ fun generate(n: Int): List<Int> {
     val primes = Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19)
 
     primes.forEach {
-        while (remains % it == 0) {
+        while (remains.isMultipleOf(it)) {
             factors.add(it)
             remains /= it
         }
@@ -17,4 +17,6 @@ fun generate(n: Int): List<Int> {
 
     return factors
 }
+
+fun Int.isMultipleOf(number: Int): Boolean = this.mod(number) == 0
 
